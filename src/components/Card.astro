@@ -1,0 +1,36 @@
+---
+// Card component - transparent square with thick black border, half page size
+---
+
+<div class="card">
+  <slot />
+</div>
+
+<style>
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .card {
+    width: 50vw;
+    height: 50vw;
+    background-color: transparent;
+    border: 8px solid black;
+    box-sizing: border-box;
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* Ensure the card remains square on smaller screens */
+  @media screen and (max-width: 768px) {
+    .card {
+      width: 50vmin;
+      height: 50vmin;
+    }
+  }
+</style>
