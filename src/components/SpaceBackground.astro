@@ -6,6 +6,12 @@
   <div class="stars layer-1"></div>
   <div class="stars layer-2"></div>
   <div class="stars layer-3"></div>
+  <div class="animation-toggle">
+    <input type="checkbox" id="animation-switch" checked>
+    <label for="animation-switch" class="toggle-slider">
+      <span class="slider-text">spaceship</span>
+    </label>
+  </div>
   <div class="content">
     <slot />
   </div>
@@ -185,4 +191,125 @@
       opacity: 0.3;
     }
   }
+
+  /* Animation toggle button */
+  .animation-toggle {
+    position: fixed;
+    bottom: 80px;
+    right: 40px;
+    z-index: 15;
+  }
+
+  #animation-switch {
+    display: none;
+  }
+
+  .toggle-slider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+    font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+  }
+
+  .slider-text {
+    color: white;
+    font-size: 14px;
+    text-transform: lowercase;
+    opacity: 0.8;
+  }
+
+  .toggle-slider::after {
+    content: '';
+    width: 50px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    position: relative;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .toggle-slider::before {
+    content: '';
+    width: 18px;
+    height: 18px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    right: 3px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+    z-index: 1;
+  }
+
+  #animation-switch:checked + .toggle-slider::after {
+    background: rgba(119, 198, 255, 0.4);
+    border-color: rgba(119, 198, 255, 0.6);
+  }
+
+  #animation-switch:checked + .toggle-slider::before {
+    right: 29px;
+    background: #77c6ff;
+  }
+
+  #animation-switch:not(:checked) + .toggle-slider .slider-text {
+    opacity: 0.5;
+  }
+
+  /* Paused animation state */
+  .space-container.paused .stars {
+    animation-play-state: paused;
+  }
+
+  .space-container.paused::before {
+    animation-play-state: paused;
+  }
+
+  @media screen and (max-width: 768px) {
+    .animation-toggle {
+      bottom: 70px;
+      right: 24px;
+    }
+
+    .slider-text {
+      font-size: 12px;
+    }
+
+    .toggle-slider::after {
+      width: 40px;
+      height: 20px;
+      border-radius: 10px;
+    }
+
+    .toggle-slider::before {
+      width: 14px;
+      height: 14px;
+      right: 3px;
+    }
+
+    #animation-switch:checked + .toggle-slider::before {
+      right: 23px;
+    }
+  }
 </style>
+
+<script>
+  // Handle animation toggle
+  const animationSwitch = document.getElementById('animation-switch');
+  const spaceContainer = document.querySelector('.space-container');
+  
+  if (animationSwitch && spaceContainer) {
+    animationSwitch.addEventListener('change', () => {
+      if (animationSwitch.checked) {
+        // Animation is on - remove paused class
+        spaceContainer.classList.remove('paused');
+      } else {
+        // Animation is off - add paused class
+        spaceContainer.classList.add('paused');
+      }
+    });
+  }
+</script>
