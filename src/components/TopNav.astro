@@ -107,12 +107,32 @@
 </style>
 
 <script>
+  // Function to show/hide landing based on modal state
+  function updateLandingVisibility() {
+    const landing = document.getElementById('landing');
+    const aboutModal = document.getElementById('about-me-modal');
+    const blogModal = document.getElementById('blog-modal');
+    
+    if (landing) {
+      // Show landing if no modals are active
+      const aboutActive = aboutModal && aboutModal.classList.contains('show');
+      const blogActive = blogModal && blogModal.classList.contains('show');
+      
+      if (!aboutActive && !blogActive) {
+        landing.classList.remove('hidden');
+      } else {
+        landing.classList.add('hidden');
+      }
+    }
+  }
+
   // Handle about me link click
   const aboutLink = document.getElementById('about-link');
   
   if (aboutLink) {
     aboutLink.addEventListener('click', (e) => {
       e.preventDefault();
+      
       const modal = document.getElementById('about-me-modal');
       const blogModal = document.getElementById('blog-modal');
       
@@ -130,6 +150,8 @@
           modal.classList.add('show');
         }
       }
+      
+      updateLandingVisibility();
     });
   }
 
@@ -139,6 +161,7 @@
   if (blogLink) {
     blogLink.addEventListener('click', (e) => {
       e.preventDefault();
+      
       const modal = document.getElementById('blog-modal');
       const aboutModal = document.getElementById('about-me-modal');
       
@@ -156,6 +179,52 @@
           modal.classList.add('show');
         }
       }
+      
+      updateLandingVisibility();
+    });
+  }
+
+  // Handle home link click
+  const homeLink = document.querySelector('.nav-left .nav-link');
+  
+  if (homeLink) {
+    homeLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      // Hide all modals when going home
+      const aboutModal = document.getElementById('about-me-modal');
+      const blogModal = document.getElementById('blog-modal');
+      
+      if (aboutModal && aboutModal.classList.contains('show')) {
+        aboutModal.classList.remove('show');
+      }
+      
+      if (blogModal && blogModal.classList.contains('show')) {
+        blogModal.classList.remove('show');
+      }
+      
+      updateLandingVisibility();
+    });
+  }
+
+  // Handle resume link click
+  const resumeLink = document.querySelector('a[href="/resume"]');
+  
+  if (resumeLink) {
+    resumeLink.addEventListener('click', () => {
+      // Hide all modals before navigating
+      const aboutModal = document.getElementById('about-me-modal');
+      const blogModal = document.getElementById('blog-modal');
+      
+      if (aboutModal && aboutModal.classList.contains('show')) {
+        aboutModal.classList.remove('show');
+      }
+      
+      if (blogModal && blogModal.classList.contains('show')) {
+        blogModal.classList.remove('show');
+      }
+      
+      updateLandingVisibility();
     });
   }
 </script>

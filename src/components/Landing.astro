@@ -1,0 +1,58 @@
+---
+// Landing component - welcome message visible by default
+---
+
+<div id="landing" class="landing">
+  <div class="landing-content">
+    <h1>Welcome to my website</h1>
+  </div>
+</div>
+
+<style>
+  .landing {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    pointer-events: none;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .landing.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .landing-content {
+    text-align: center;
+    color: white;
+    font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 48px;
+    font-weight: 300;
+    text-transform: lowercase;
+    letter-spacing: 1px;
+  }
+
+  @media screen and (max-width: 768px) {
+    h1 {
+      font-size: 36px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    h1 {
+      font-size: 28px;
+    }
+  }
+</style>
