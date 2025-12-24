@@ -1,0 +1,79 @@
+---
+// AboutMe component - shows information about the user
+---
+
+<div id="about-me-modal" class="about-modal hidden">
+  <div class="about-content">
+    <h2>About Me</h2>
+    <p>
+      Hello! I'm a passionate developer who loves creating beautiful and functional web experiences. 
+      I enjoy working with modern technologies and building projects that make a difference.
+    </p>
+    <p>
+      When I'm not coding, you can find me exploring new technologies, reading about design patterns, 
+      or working on personal projects that challenge me to grow as a developer.
+    </p>
+  </div>
+</div>
+
+<style>
+  .about-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 15;
+    opacity: 1;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .about-modal.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .about-content {
+    max-width: 500px;
+    width: 90%;
+    color: white;
+    font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+    text-align: center;
+  }
+
+  h2 {
+    margin: 0 0 24px 0;
+    font-size: 24px;
+    font-weight: 400;
+    text-transform: lowercase;
+  }
+
+  p {
+    margin: 0 0 16px 0;
+    line-height: 1.6;
+    font-size: 16px;
+    opacity: 0.9;
+  }
+
+  p:last-of-type {
+    margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    .about-content {
+      margin: 20px;
+    }
+
+    h2 {
+      font-size: 20px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+</style>

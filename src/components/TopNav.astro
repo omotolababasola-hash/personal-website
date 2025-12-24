@@ -8,7 +8,7 @@
   </div>
   <ul class="nav-right">
     <li class="nav-item">
-      <a href="/about" class="nav-link">about me</a>
+      <a href="#" class="nav-link" id="about-link">about me</a>
     </li>
     <li class="nav-item">
       <a href="/resume" class="nav-link">resume</a>
@@ -105,3 +105,19 @@
     }
   }
 </style>
+
+<script>
+  // Handle about me link click
+  const aboutLink = document.getElementById('about-link');
+  
+  if (aboutLink) {
+    aboutLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      const modal = document.getElementById('about-me-modal');
+      if (modal) {
+        // Toggle the hidden class
+        modal.classList.toggle('hidden');
+      }
+    });
+  }
+</script>
