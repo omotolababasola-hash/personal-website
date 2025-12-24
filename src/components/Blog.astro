@@ -1,0 +1,187 @@
+---
+// Blog component - shows blog entries list
+---
+
+<div id="blog-modal" class="blog-modal">
+  <div class="blog-content">
+    <h2>Blog</h2>
+    <div class="blog-list">
+      <article class="blog-entry">
+        <h3>Building Interactive Space Animations with CSS</h3>
+        <p class="blog-date">December 20, 2025</p>
+        <p class="blog-excerpt">
+          Exploring how to create mesmerizing star field animations using pure CSS transforms and keyframes. 
+          Learn the techniques behind creating smooth, performant space-themed backgrounds.
+        </p>
+      </article>
+      
+      <article class="blog-entry">
+        <h3>The Magic of Component-Based Architecture</h3>
+        <p class="blog-date">December 15, 2025</p>
+        <p class="blog-excerpt">
+          Diving deep into modern web development patterns and how breaking down complex UIs into 
+          reusable components can transform your development workflow.
+        </p>
+      </article>
+      
+      <article class="blog-entry">
+        <h3>From Stars to Text: Advanced Animation Sequences</h3>
+        <p class="blog-date">December 10, 2025</p>
+        <p class="blog-excerpt">
+          A technical breakdown of creating complex animation sequences that tell a story. 
+          How to coordinate multiple elements to create seamless visual narratives.
+        </p>
+      </article>
+
+      <article class="blog-entry">
+        <h3>Responsive Design in the Age of Flexible Layouts</h3>
+        <p class="blog-date">December 5, 2025</p>
+        <p class="blog-excerpt">
+          Mastering modern CSS Grid and Flexbox techniques to create layouts that adapt beautifully 
+          across all device sizes. Tips for building truly responsive experiences.
+        </p>
+      </article>
+
+      <article class="blog-entry">
+        <h3>Performance Optimization: Making the Web Faster</h3>
+        <p class="blog-date">November 28, 2025</p>
+        <p class="blog-excerpt">
+          Essential strategies for optimizing web performance, from lazy loading images to 
+          efficient JavaScript bundling. Learn how to make your sites lightning fast.
+        </p>
+      </article>
+
+      <article class="blog-entry">
+        <h3>The Art of Minimalist Web Design</h3>
+        <p class="blog-date">November 22, 2025</p>
+        <p class="blog-excerpt">
+          Exploring the principles of clean, minimal design and how less can truly be more. 
+          Creating impactful user experiences through thoughtful simplicity and purposeful whitespace.
+        </p>
+      </article>
+    </div>
+  </div>
+</div>
+
+<style>
+  .blog-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 15;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .blog-modal.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .blog-content {
+    max-width: 700px;
+    width: 90%;
+    max-height: 70vh;
+    color: white;
+    font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+    transform: scale(1);
+    overflow-y: auto;
+    padding-right: 8px;
+  }
+
+  .blog-content::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .blog-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+  }
+
+  .blog-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+  }
+
+  .blog-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  h2 {
+    margin: 0 0 32px 0;
+    font-size: 24px;
+    font-weight: 400;
+    text-transform: lowercase;
+    text-align: center;
+  }
+
+  .blog-list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .blog-entry {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 24px;
+  }
+
+  .blog-entry:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .blog-entry h3 {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+    line-height: 1.4;
+  }
+
+  .blog-date {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+  }
+
+  .blog-excerpt {
+    margin: 0;
+    line-height: 1.6;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  @media screen and (max-width: 768px) {
+    .blog-content {
+      margin: 20px;
+      max-height: 60vh;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin-bottom: 24px;
+    }
+
+    .blog-list {
+      gap: 24px;
+    }
+
+    .blog-entry h3 {
+      font-size: 16px;
+    }
+
+    .blog-excerpt {
+      font-size: 14px;
+    }
+  }
+</style>

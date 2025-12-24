@@ -14,7 +14,7 @@
       <a href="/resume" class="nav-link">resume</a>
     </li>
     <li class="nav-item">
-      <a href="/blog" class="nav-link">blog</a>
+      <a href="#" class="nav-link" id="blog-link">blog</a>
     </li>
   </ul>
 </nav>
@@ -114,9 +114,47 @@
     aboutLink.addEventListener('click', (e) => {
       e.preventDefault();
       const modal = document.getElementById('about-me-modal');
+      const blogModal = document.getElementById('blog-modal');
+      
+      // Hide blog modal if it's open
+      if (blogModal && blogModal.classList.contains('show')) {
+        blogModal.classList.remove('show');
+      }
+      
       if (modal) {
-        // Toggle the hidden class
-        modal.classList.toggle('hidden');
+        if (modal.classList.contains('show')) {
+          // Hide the modal
+          modal.classList.remove('show');
+        } else {
+          // Show the modal
+          modal.classList.add('show');
+        }
+      }
+    });
+  }
+
+  // Handle blog link click
+  const blogLink = document.getElementById('blog-link');
+  
+  if (blogLink) {
+    blogLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      const modal = document.getElementById('blog-modal');
+      const aboutModal = document.getElementById('about-me-modal');
+      
+      // Hide about modal if it's open
+      if (aboutModal && aboutModal.classList.contains('show')) {
+        aboutModal.classList.remove('show');
+      }
+      
+      if (modal) {
+        if (modal.classList.contains('show')) {
+          // Hide the modal
+          modal.classList.remove('show');
+        } else {
+          // Show the modal
+          modal.classList.add('show');
+        }
       }
     });
   }
