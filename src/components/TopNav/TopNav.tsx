@@ -35,9 +35,10 @@ const TopNav: React.FC<TopNavProps> = ({ onNavClick }) => {
         </li>
         <li className="nav-item">
           <a 
-            href="/resume" 
+            href="/resume.pdf" 
             className="nav-link"
-            onClick={(e) => handleClick(e, 'resume')}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             resume
           </a>
